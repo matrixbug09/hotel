@@ -18,9 +18,9 @@
 <!-- 데이터베이스 연결 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://ec2-3-15-175-144.us-east-2.compute.amazonaws.com:3306/hotelDB"/>
-        <property name="username" value="post" />
-        <property name="password" value="tiger90" />
+        <property name="url" value="jdbc:mysql://localhost:3306/hotelDB"/>
+        <property name="username" value="lolololo" />
+        <property name="password" value="skdfljlkweweru34234fwfwf43" />
     </bean>
 
     <!-- SqlSession -->
