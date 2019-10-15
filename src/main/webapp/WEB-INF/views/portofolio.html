@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <style>
+
+        .img-area {
+            padding-left: 100px;
+
+            margin: 70px auto 50px auto;
+            width: 1200px;
+            height: 400px;
+        }
+
+        .icon {
+            padding-right: 30px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px
+
+        }
+
+        h1 {
+            font-size: 40px;
+            padding-left: 100px;
+
+        }
+        h2 {
+            padding-left: 100px;
+
+        }
+
+        .bg {
+            max-width: 100%;
+            height: 640px;
+            background-color: rgba(0 0 0 0.4);
+
+            z-index: 100;
+        }
+
+
+    </style>
+
+</head>
+<body>
+<div style="background-image:url(../img/mac1.jpg);
+        max-width: 100%; height: 440px; filter: brightness(78%)">
+
+    <div class="bg"></div>
+</div>
+<header th:include="header::header"></header>
+<div>
+    <section>
+        <H1>PORTFOLIO</H1>
+        <h1>
+            포트폴리오 소개.
+        </h1>
+        <div class="img-area">
+            <p class="section-title">사용된 툴 </p>
+            <img class="icon" src="../img/icon/intellij.png" style=" width: 180px; height:auto">
+            <img class="icon" src="../img/icon/js.png" style=" width: 150px; height:auto">
+            <img class="icon" src="../img/icon/html5.png" style=" width: 150px; height:auto">
+            <img class="icon" src="../img/icon/thymeleaf.jpg" style=" width: 440px; height:auto">
+            <img class="icon" src="../img/icon/jquery.png" style=" width: 140px; height:auto">
+            <img class="icon" src="../img/icon/spring.png" style=" width: 240px; height:auto">
+            <img class="icon" src="../img/icon/my.png" style=" width: 220px; height:auto">
+            <img class="icon" src="../img/icon/maven.png" style=" width: 240px; height:auto">
+            <img class="icon" src="../img/icon/tomcat-1.png" style=" width: 200px; height:auto">
+            <img class="icon" src="../img/icon/mysql.png" style=" width: 160px; height:auto">
+            <img class="icon" src="../img/icon/java8.png" style=" width: 160px; height:auto">
+            <img class="icon" src="../img/icon/aws.png" style=" width: 320px; height:auto">
+
+
+
+        </div>
+    </section>
+    <br><br><br><br><br><br><br><br>
+    <section>
+        <article style="padding-left: 270px">
+            <h1>지금 까지의 개발과정</h1>
+            <h2>맨땅에 헤딩하기..</h2>
+            <textarea style="border: none; width: 1300px; height: 2900px; font-size: 20px;
+        padding-right:50px;padding-top: 50px; margin-left:  40px;" readonly="readonly">
+
+            개발과정은 자바의 자자도 모르던 상태에서
+            1년간 독학을 한 저에겐 맨땅에 헤딩하는 방식으로 무조건 하나하나 풀릴 때까지 찾아보고 해결해 나가는 방식이었습니다.
+            먼저 학습 로드맵을 정리하고
+            자바에 대한 기본적인 지식 습득 후, 스프링 프레임워크를 유튜브 및 구글링을 통하여 학습하면서
+            포트폴리오를 제작해 나가기로 하였습니다.
+
+            예약 시스템을 정하였고 호텔 객실 예약과 CRUD 시스템 구현을 목표로 하였습니다. 프론트단은 전에 여행했었던
+            리조트 사이트와 비슷하게 만들었습니다. 애니메이션은 _animate.css와 aos.scss라는 오픈소스를 사용하였고
+            메뉴바 css는 리조트 사이트에서 카피하여 조금 수정하고 재사용 하였습니다.
+
+            서블릿과 스프링을 사용해서 로그인을 구현하는 것을 해보고 난 후 그 때부터 제작에 투입하였고
+            제일 처음 제작한 부분은 Room 페이지이었습니다. 또 다시 자바스크립트 및 AJAX라는 벽을 만나서 공부해야만 했기에 계속 구글링하고
+            깃헙 사이트 에서 소개된 포트폴리오도 같이 참고하면서 자바스크립트와 제이쿼리를 계속 사용하고 고치면서 숙련도를 높였습니다.
+            (자바만 공부 했기에 자바스크립트 제이쿼리는 하나도 몰랐습니다. 그래서 유튜브 학습 병행)
+            예약 시스템이었기 때문에 날짜 설정이 중요하였고. 제이쿼리의 데이트 피커를 사용하게 되었습니다.
+            소스를 가져다 쓰는건 쉽지만 상황에 맞게 다시 설정 하는게 어렵다는 걸 느꼈고 이것 역시 계속 시도해보고 고쳐나가면서 최종적으로
+            오늘 날짜 기준으로 선택 되게 하고 중복으로 선택 되지 못하게 하였습니다. 네이버 예약시스템과 똑같이 만들고 싶다는
+            생각이 들어서 이 개인 프로젝트를 계속해서 수정해 나갈 예정입니다.
+
+
+            #로그인 구현..
+
+            원래는 jsp로 공부하였으나 스프링이 타임리프를 지원한다고 하여 다시 타임리프를 사용하면서 학습해 나갔습니다.
+            타임리프 세션을 이용해 로그인 로그아웃 버튼을 바꿔서 보여주었고 HttpSessionBindingListener 바인딩 기술을 사용하여
+            로그인한 유저 정보를 HashTable에 담아서 현재 접속중인 유저를 Enumeration 사용하여 콘솔창에 찍어 내도록 하였고,
+            invalide되면 언바인딩 함수에서 해당하는 해쉬테이블 정보를 삭제하도록 하였습니다.
+            지금은 웹단에서는 안보이지만 구현할 예정입니다.
+
+
+            #게시판 구현..
+
+            예약 기능 보다 게시판이 훨 씬 어려웠고 페이징 기능, 계층형 댓글 알고리즘 및 쿼리 구조등 생각해야 할게 너무 많아서
+            많이 힘들었습니다. 하지만 이 계기로 자바를 한 층 더 이해하는 계기가 되었고 처음으로 댓글 기능을 순전히 제 머리로
+            짜낸 계기가 되었습니다. 계층형 댓글은 유튜브 댓글 처럼 댓글 달기 버튼을 클릭하면 댓글을 쓴 게시자 밑에 댓글창이 생기게
+            하였고, 대댓글을 작성 순서대로 출력하게끔 하였습니다. 쿼리는 하나로 처리하려고 노력했지만, 지식이 부족하여  계층형 대댓글 쿼리와
+            일반 댓글 쿼리를 따로 처리하였습니다.(CommentMapper) limit를 사용하여 레벨링 계층(comgrp부분)을 +1 증가하고.
+            order by 로 내림차순 순서대로 데이터 가져왔습니다. 그리고 앞단에서는 타임리프를 if문을 사용하여 대댓글 부분은 대댓글 form을 지정하고
+            댓글과 대댓글을 구분하였습니다. 여기서 제이쿼리 append 기능을 사용하여 댓글 달기창 위치를 댓글게시자 밑으로 나오게끔 처리하였습니다.
+            프로젝트 처음 시작 할 때 제이쿼리와 자바스크립트도 몰랐던 때와는 다르게 스스로 코딩을 할 수 있는 능력이
+            생기게 된 시점이라 많이 뿌듯하였습니다. 페이징 기능은 알고리즘 짜내는데 너무 시간이 오래 걸려 여러 블로그에 있는 페이징 처리
+            알고리즘을 참고하여 만들었습니다.
+
+
+            #스프링
+
+            스프링은 포폴에 나오는 기능 빼고는 사실 잘 알지 못합니다. @Responsebody 처리를 하면 json으로 쉽게 보낼 수 있다는 것과
+            주로 사용한 커맨드 객체(VO) 자동주입-@Autowired, parameter커스텀 설정하는-@Requestparam과 같이 기본적인 툴 밖에 사용하지 못합니다.
+            스프링 부트도 사용할 수도 있지만 자바 기초도 튼튼하지 않은 상태에서 툴에 의존하다 보면 실제로 내부에서 어떻게 처리되는지 알지 못하기 때문에
+            부트는 사용하지 않았고(어노테이션에 의한 처리와 같은) 앞과 같은 이유로 room페이지 <예약 가능 객실 확인 기능>을 일부러 @Responsebody를
+            사용 안 하고, 호출한 ajax로 넘겨줄 데이터를 GSON을 사용하여  json처리를 시도해 봤습니다.
+            @Responsebody를 사용하면 코딩도 짧아지고 배열에 담긴 vo객체도 깔끔하게 json으로 처리된다는 게 흥미로웠습니다.
+            현재 예약 가능 객실 부분은 ajax요청 후 json처리를 사용하긴 했지만 학습이 부족해서 콘솔창에서는 타임리프 TemplateInputException 이 발생
+            합니다. 이 부분은 정상적으로 작동 하긴 하지만 에러를 고치지는 못하였습니다. @Responsebody를 사용하면 에러가 안뜨는데
+            json을 처리할 때 타임리프 템플릿 까지 처리하지 못해서 발생하는 에러인것 같습니다.
+            @Transactional 한 곳만 적용 되었고(객실선택 후 예약 완료까지 실행 부분) 많이 사용 하지 못한 기술이라 트랜잭션은 약간 두루뭉실한 감이있습니다.
+            스케쥴러는 스프링 @Scheduled 사용하여 정각에 전 날짜를 오늘 날짜로 바꿔주고 남은 객실을 초기화하는 로직을 구현했습니다.
+
+
+            #서버 배포.
+
+            서버 배포는 아마존 AWS EC2 서비스를 사용하였습니다. 서버 배포도 역시 처음 하는거라 구글링을 해가며
+            구축하였습니다. Ubuntu리눅스 환경을 구축하였는데 mysql이 잘 동작하지 않아 많은 시간을 허비 했습니다.
+            그 이유를 찾아보니 리눅스환경에서 mysql초기 설정은 테이블 네임을 대소문자를 구분하여 대문자는 인식하지 못한다는 점 이었습니다.
+            결국 2틀 동안 다른 곳만 계속 수정 또는 재설치를 반복했고 BOARD not exist 라는 에러 문자를 확이하고서야
+            해결하게 되었습니다. 에러페이지를 따로 만들어 놔서 확인을 못했었는데 에러확인이 큰 도움이 되었습니다.
+            mysqld.cnf->lower_case_table_names = 1 삽입으로 대소문자를 구분하지 않는 설정도 있었지만 설정을 하면 my
+            sql이 부팅이 되지 않아 결국에는 쿼리 테이블 명을 소문자로 하였습니다. 이 헤프닝을 보았을 때 해결책에 큰 도움이
+            된 로그확인 및 에러내용도 중요하다는 걸 다시 한 번 느꼈습니다.
+
+
+            #마무리..
+
+            처음에는 정말 대 혼란이었고 프로그래밍이라는게 너무 생소하고 아는게 없고 주변에 코딩하는 사람도 없어서 초기에 너무 답답하고 힘들어서
+            몇 개월 쉬기도 했지만,
+            다시 마음을 가다듬고 절대 포기하지 않겠다고 마음먹고 안되면 될 때 까지 해보자라는 마인드로 여기까지 왔습니다.
+            포트폴리오를 제작한 이 시점에서 되돌아 봤을 때 시작했던 때와 달리 많은 발전을 이루어 냈고 또한 코딩에 대한 자신감도 생겼습니다.
+
+            지금은 자바 및 자바스크립트 그리고 쿼리를 쓸 줄 아는 능력도 많이 부족하다고 느낍니다. 이 부분은 노력으로
+            극복 할 수 있다고 보고 부지런히 트레이닝 하여서 다음 단계로 나아갈 수 있게 전진해보겠습니다.
+            포트폴리오를 제작하면서 느낀건 코딩은 알고리즘이 중요하다고 생각이 들었습니다. 언어야 쓸수록 숙련도가 높아지지만 알고리즘은
+            다양한 패턴이 존재하고 시나리오대로 설계를 머리에서 짜내어야 함으로 많은 경험과 훈련이 필요 할 것 같습니다.
+
+            앞으로 공부할게 많이 남아 있고 실무에서 어려움이 많이 닥치겠지만 지금 까지 스스로 해낸 것 처럼 해낼 수 있다는
+            자신감으로 조금식 성장해가는 개발자가 되고싶습니다.
+
+            2019.10.14
+
+
+            <업데이트 해야할 곳>
+            회원정보 수정 및 탈퇴 기능.
+            입력 폼 글자수 제한 및 AWS EC2에 설치된 Tomcat8 Server.xml 설정.
+            파일 업로드 및 사진 업로드 기능.
+            log처리.
+            자바스크립가 아닌 백단에서 권한 체크하기.(글쓰기 수정 삭제와 같은 권한처리)
+            코드 문서화 또는 정리.
+            css 정리.
+
+
+            </textarea>
+        </article>
+    </section>
+</div>
+<footer th:include="footer::footer"></footer>
+</body>
+</html>

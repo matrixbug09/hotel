@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action ="@{/templates/events}" METHOD="post" th:object="${userVO}">
+    아이디입력
+    <input type="text" name="id" th:field="*{id}"/>
+    <input type="text" name="id" th:field="*{pass}"/>
+
+
+    <input type="submit" value="ok">
+</form>
+
+
+</body>
+</html>

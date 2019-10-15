@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="BoardMapper">
+
+<!--mysql  #{} 대문자 구분 조심-->
+
+<resultMap id="boardMap" type="BoardVO">
+	<id property="bdTitle" column="bdTitle"/>
+	<id property="bdContent" column="bdContent"/>
+	<id property="bdDate" column="bdDate"/>
+	<id property="bdHit" column="bdHit"/>
+	<id property="bdComments" column="bdComments"/>
+	<id property="bdGroup" column="bdGroup"/>
+	<id property="bdIndent" column="bdIndent"/>
+	<id property="bdStep" column="bdStep"/>
+	<id property="bdNumber" column="bdNumber"/>
+</resultMap>
+
+<!--    <insert id="bookinsert" parameterType="BookVO">-->
+<!--		   insert into book(book_name,book_num) values(#{book_name},#{book_num})-->
+<!--	</insert>-->
+	<select id="boardList2" parameterType="Map" resultType="BoardVO">
+		SELECT * FROM board ORDER BY bdNumber DESC LIMIT #{pagenum},#{contentnum}
+	</select>
+
+	<insert id="writeInsert" parameterType="BoardVO">
+		INSERT INTO BOARD (
+						  bdId,
+						  bdTitle,
+		 				  BDCONTENT,
+		 				  BDDATE,
+		 				  BDHIT,
+		 				  BDGROUP,
+		 				  BDINDENT,
+		 				  BDSTEP)
+		 				  VALUES (
+		 				    #{bdId},
+							#{bdTitle},
+							#{bdContent},
+							now(),
+							1,
+							#{bdGroup},
+							#{bdIndent},
+							#{bdStep})
+	</insert>
+
+	<select id="boardList" parameterType="BoardVO" resultType="BoardVO">
+		select * from board
+	</select>
+	<select id="contentView" parameterType="BoardVO" resultType="BoardVO">
+		select * from board where bdId=#{bdId} and bdNumber=#{bdNumber}
+	</select>
+	<update id="modifyPost" parameterType="BoardVO">
+		update board set bdContent=#{bdContent} where bdNumber=#{bdNumber}
+	</update>
+
+	<delete id="deleteContent" parameterType="BoardVO">
+		delete from board where bdId=#{bdId} and bdNumber=#{bdNumber}
+	</delete>
+
+
+
+
+</mapper>

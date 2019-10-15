@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/time.css">
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+    <link rel="stylesheet" type="text/css" href="../../css/board.css">
+
+
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+
+    <style>
+        .writeForm{
+            padding: 150px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+
+<div  style="background-image:url(../img/mac1.jpg);
+        max-width: 100%; height: 440px; filter: brightness(78%)" >
+
+    <div class="community_title fadeIn">글 쓰 기</div>
+    <div class="bg"></div>
+</div>
+<header th:include="header::header"></header>
+<DIV class="writeForm">
+<form id="frm" action="/writeBox" method="post" >
+    <table width="100%">
+        <tr>제목
+            <td><input type="text" id="title" name="bdTitle" maxlength="100" style="width:1050px"/></td>
+        </tr>
+        <tr><td>글쓰기</td></tr>
+        <tr>
+            <td>
+                <textarea rows="10" cols="30" id="summernote" class="summernote" name="bdContent" maxlength="10000" style="height: 600px" ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="submit" id="save"  value="저장"/>
+                <input type="button" value="취소"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+<!--                <input type="file" img>-->
+            </td>
+        </tr>
+    </table>
+</form>
+</DIV>
+<script>
+    $(document).ready(function () {
+
+
+        $("#summernote").summernote({
+            height: 500,
+            focus: true
+        });
+    })
+</script>
+<footer th:include="footer::footer"></footer>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+</head>
+<body>
+<table border="1px" with="500">
+    <tr>
+        <td>아이디</td>
+        <td>제목</td>
+        <td>Numver</td>
+        <td>날</td>
+        <td>content</td>
+    </tr>
+    <form th:action="@{/content_modify}" method="get">
+        <tr th:each="board : ${board}">
+            <td><input id="bdId" type="text" name="bdId" th:value="${board.bdId}"></td>
+            <td><input type="text" name="bdTitle" th:value="${board.bdTitle}"></td>
+            <td><input id="bdNumber" type="text" name="bdNumber" th:value="${board.bdNumber}"></td>
+            <td><input name="bdDate" th:value="${board.bdDate}"></td>
+            <td><input type="text" name="bdContent" th:value="${board.bdContent}"></td>
+        </tr>
+        <tr align="right">
+            <input th:formaction="${content_modify}" th:formmethod="get" th:type="submit">
+            <input onclick="return dlete()" type="button" value="삭제" class="delete_button">
+            <input type="submit" value="목록">
+            <input type="submit" value="답변">
+        </tr>
+    </form>
+</table>
+<script>
+    // $('.delete_button').click(function () {
+    //     dlete();
+    //     if (DuplicateCheck===false){
+    //         alert("권한이 없습니다.")
+    //         return false;
+    //     }
+    //
+    // });
+    function dlete() {
+
+        alert("werwer");
+        $.ajax({
+            url: '/deleteContent',
+            type: 'get',
+            data: {'bdId':$('#bdId').val(),'bdNumber':$('.bdNumber').text() },
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "false") {
+                    location.href='writeView';
+                    alert("권한이 없습니다.");
+                } else{
+                    location.href='writeView';
+
+                    alert("ㅈㄷㄱㅉㄷ");
+                    return;
+                }
+            }
+        })
+    }
+
+
+
+</script>
+</body>
+</html>

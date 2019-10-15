@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>geaer</title>
+    <link rel="stylesheet" type="text/css" href="http://ec2-13-58-142-181.us-east-2.compute.amazonaws.com:8080/hotel123/css/_layout.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+
+
+<header th:fragment="header">
+
+<div  class="nani_top">
+<!--    TymeLeaf 세션 객체 이용한 로그인 로그아웃 버튼 바꾸기-->
+    <a class="login" href="login.html" th:if="${session.isEmpty()}" th:text="LOGIN" >LOGIN</a>
+    <a class="login" href="doLogout.html" id="logoutBtn" th:unless="${session.isEmpty()}"  >로그아웃</a>
+    <a class="logo" href="home.html"> YOUNG HOTEL </a>
+    <ul class="menu_area" >
+        <li>
+            <a class="homeMenu" href="home">ABOUT</a>
+            <dl class="sub">
+                <dt>
+                    <a href="home.html">ABOUT 전경</a>
+                    <a href="home">ABOUT 소개</a>
+                </dt>
+            </dl>
+        </li>
+        <li>
+            <a class="homeMenu" href="portofolio.html">PORTFOLIO</a>
+
+        </li>
+        <li>
+            <a class="homeMenu" href="room.html">객실 예약(ROOM)</a>
+            <dl class="sub">
+                <dt>
+                    <a href="room.html">객실 예약(ROOM)</a>
+                </dt>
+            </dl>
+        </li>
+        <li class="none"></li>
+        <li>
+            <a class="homeMenu" href="mypage.html">MY PAGE</a>
+
+        </li>
+        <li>
+            <a class="homeMenu" href="javascript:page(1);">게시판 기능</a>
+            <dl class="sub">
+                <dt>
+                    <a href="">공지 사항</a>
+                    <a href="javascript:page(1);">게시판</a>
+                    <a href="">문의 하기</a>
+                    <a href="">FAQ</a>
+                </dt>
+            </dl>
+        </li>
+        <li class="none"></li>
+    </ul>
+</div>
+    <script>
+        $(window).scroll(function(){
+            if($(window).scrollTop()>0){
+                $(".nani_top").addClass("SCROLL")
+            }else{
+                $(".nani_top").removeClass("SCROLL")
+            }
+
+        });
+    </script>
+
+    <script>
+
+        function page(idx) {
+
+
+            var f = document.paging;
+            f.contentnum.value=10;
+            f.pagenum.value=1;
+            f.action="list";
+            f.method="get";
+            f.submit();
+
+        }
+
+    </script>
+
+    <form name="paging">
+        <input type="hidden" name="pagenum">
+        <input type="hidden" name="contentnum">
+    </form>
+</header>
+</body>
+</html>

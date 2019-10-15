@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="RoomMapper">
+
+	<resultMap id="checkMap" type="RoomVO">
+		<id property="room_date" column="room_date"/>
+		<id property="room_index" column="room_index"/>
+		<id property="room_type" column="room_type"/>
+		<id property="room_remain" column="room_remain"/>
+	</resultMap>
+
+	<select id="roomcheck" parameterType="RoomVO" resultMap="checkMap">
+		select * from rooms where room_date=#{room_date} and room_type=#{room_type}
+	</select>
+
+
+    <!--<insert id="roomset" parameterType="RoomVO">-->
+		   <!--insert into room(room_type,room_date) values(#{room_type},#{room_date})-->
+	<!--</insert>-->
+
+
+    <select id="getRoom" parameterType="Map" resultType="RoomVO">
+		select * from rooms where room_remain >= #{required_room} and room_type=#{room_type} order by room_date asc
+	</select>
+
+    <select id="stayroomcheck" parameterType="RoomVO" resultType="RoomVO">
+		select room_remain from rooms where room_index=#{room_index} and room_type=#{room_type}
+	</select>
+
+    <update id="roomupdate" parameterType="RoomVO">
+		update rooms set room_remain=#{room_remain} where room_type=#{room_type} and room_index=#{room_index}
+	</update>
+
+    <select id="remainingrooms" parameterType="RoomVO" resultType="RoomVO">
+		select room_remain from rooms where room_index=#{room_index} and room_type=#{room_type}
+	</select>
+
+    <update id="roomchange" parameterType="RoomVO">
+		update rooms set room_date=#{room_date},room_remain=10 where room_index=${room_index}
+	</update>
+
+
+</mapper>

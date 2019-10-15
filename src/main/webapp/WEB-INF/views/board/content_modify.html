@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/12.4.0/classic/ckeditor.js"></script>
+
+</head>
+<body>
+<div class="modify">
+<div class="modify_table" border="1px" with="500" th:each="board : ${board}" >
+    <form class="modify_form" action="/modifyBoard" method="get">
+    <div class="modify_title" th:text="${board.bdTitle}">제목</div></br></br></br>
+    <div class="modify_bdId"align="left" th:text="${board.bdId}"></div>
+    <div class="modify_bdId" align="left" th:text="${board.bdDate}"></div></br></br></br>
+        <textarea class="ckeditor" id="Contents"   name="bdContent" th:text="${board.bdContent}"></textarea>
+        <div >
+            <div class="bdNumber" th:text="${board.bdNumber}"/>
+            <div th:text="${board.bdDate}"/>
+            <div th:text="${board.bdContent}"/>
+            <input type="hidden" name="bdNumber" th:value="${board.bdNumber}">
+        </div>
+    <input type="submit">
+    </form>
+</div>
+</div>
+<textarea id="summernote" class="contentBox"  name="bdContent" th:text="${board.bdContent}"></textarea>
+
+<script type="text/javascript">
+    CKEDITOR.replace('Contents',{
+            toolbar: 'Full',
+            uiColor: '#ffffff',
+        enterMode : CKEDITOR.ENTER_BR,
+        shiftEnterMode: CKEDITOR.ENTER_P,
+        autoParagraph: false,
+        }
+    );
+    CKEDITOR.editorConfig = function( config ) {
+        config.width = 400;
+    };
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#summernote").summernote({
+            height: 100,
+            focus: false,
+            toolbar: false,
+            placeholder: 'type with apple, orange, watermelon and lemon',
+            hint: {
+                words: ['apple', 'orange', 'watermelon', 'lemon'],
+                match: /\b(\w{1,})$/,
+                search: function (keyword, callback) {
+                    callback($.grep(this.words, function (item) {
+                        return item.indexOf(keyword) === 0;
+                    }));
+                }
+            }
+        });
+    })
+</script>
+
+
+</body>
+</html>

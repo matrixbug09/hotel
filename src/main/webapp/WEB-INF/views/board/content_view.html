@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../css/board.css">
+
+    <script src="https://cdn.ckeditor.com/4.13.0/standard/ckeditor.js"></script>
+    <!-- include libraries(jQuery, bootstrap) -->
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/time.css">
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <!-- include summernote css/js -->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+</head>
+<body>
+<header th:include="header::header"></header>
+<div style="background-color: #444444; height: 200px" with="500"></div>
+<!--board : <list>객체로 받는다.-->
+<div class="modify" style="padding-top: 2px">
+    <div class="modify_table" border="1px" with="500" th:each="board : ${board}">
+        <div class="modify_title" th:text="${board.bdTitle}">제목</div>
+        </br></br></br>
+        <div class="modify_bdId" align="left" th:text="${board.bdId}" id="bdId"></div>
+        <div class="modify_bdDate" align="left" th:text="${board.bdDate}"></div>
+        <div class="bdNumber" align="left" th:text="${board.bdNumber}"></div>
+        <div STYLE="text-align: right" th:each="board : ${board}">
+            <a class="btn btn-primary stretched-link" onclick="return sessionCheck()" th:href="@{'/content_modify' (bdId=${board.bdId},
+                                    bdNumber=${board.bdNumber},
+                                    bdDate=${board.bdDate},
+                                    bdTitle=${board.bdTitle},
+                                  bdContent=${board.bdContent})}">수정</a>
+            <input onclick="return dlete()" type="button" value="삭제" class="delete_button">
+
+<!--            <input type="submit" value="목록">-->
+
+<!--            <input type="submit" value="답변">-->
+        </div>
+        <textarea class="ckeditor" id="Contents" th:text="${board.bdContent}"></textarea>
+    </div>
+    <div class="comment_div">
+        <form action="commentInsert" method="post">
+            <table style="border: 1px solid">
+                <!--세션이 null이 아니면 댓글 등록 창을 보이게 한다.-->
+                <th:block th:if="${session.userID!=null}">
+                    <tr th:each="board : ${board}">
+                        <td th:text="${session.userID}">세션 아이디</td>
+                        <td><input class="session_id" name="comId" type="hidden" th:value="${session.userID}"></td>
+                        <td><input name="comContent" type="text" style="text-align:center; width:800px; height:140px;">
+                        </td>
+                        <td><input name="bdNumber" type="hidden" th:value="${board.bdNumber}"></td>
+                        <input name='bdId' type='hidden' th:value="${board.bdId}">
+                        <td><input type="submit" value="댓글 등"></td>
+                    </tr>
+                </th:block>
+            </table>
+
+
+        </form>
+
+    </div>
+</div>
+<div style="padding-left: 300px">
+<div  class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2 class="page-header">Comments</h2>
+            <section class="comment-list">
+                <!-- First Comment -->
+                <article class="row" th:each="comment : ${comment}">
+                    <div th:if="${comment.comgrp>0}" style="padding-left: 70px">
+
+
+                        <article th:class="row+${comment.level}+${comment.comgrp}">
+                            <div class="col-md-2 col-sm-2 col-md-offset-1 col-sm-offset-0 hidden-xs">
+                                <figure class="thumbnail">
+                                    <img class="img-responsive"
+                                         src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png"/>
+                                    <figcaption class="text-center" th:text="${comment.comId}">username</figcaption>
+                                </figure>
+                            </div>
+                            <div class="col-md-9 col-sm-9">
+                                <div class="panel panel-default arrow left">
+                                    <div class="panel-heading right">Reply</div>
+                                    <div class="panel-body">
+                                        <header class="text-left">
+                                            <div class="comment-user thatguy"><i class="fa fa-user"></i> That Guy</div>
+                                            <div class="comment-user" th:text=" 그룹순서+${comment.level}"> That Guy</div>
+                                            <time th:text="${comment.comDate}" class="comment-date"
+                                                  datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i> Dec 16, 2014
+                                            </time>
+                                        </header>
+                                        <div class="comment-post">
+                                            <p th:text="${comment.comContent}">
+                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                                tempor incididunt ut labore et do
+                                                lore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                                ullamco laboris nisi ut aliquip ex ea
+                                                commodo consequat.
+                                            </p>
+                                        </div>
+                                        <div class="text-right">
+                                            <a type="button" th:wpwp="${comment.comgrp}" class="btn btn-default btn-sm"
+                                               th:id="${comment.level}" th:comid="${comment.comId}"
+                                               onclick="reply_form(this.id, $(this).attr('wpwp'),$(this).attr('comid'))">댓글</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+
+
+                    </div>
+                    <div th:unless="${comment.comgrp>0}">
+
+                        <div class="col-md-2 col-sm-2 hidden-xs">
+                            <figure class="thumbnail">
+                                <img class="img-responsive"
+                                     src="http://www.tangoflooring.ca/wp-content/uploads/2015/07/user-avatar-placeholder.png"/>
+                                <figcaption class="text-center" th:text="${comment.comId}">username</figcaption>
+                            </figure>
+                        </div>
+
+                    </div>
+                    <div class="col-md-10 col-sm-10" th:if="${comment.comgrp<=0}">
+                        <div class="panel panel-default arrow left">
+                            <div class="panel-body">
+                                <header class="text-left">
+                                    <div class="comment-user"><i class="fa fa-user"></i> That Guy</div>
+                                    <div class="comment-user" th:text="그룹순서+${comment.level}"> That Guy</div>
+                                    <time class="comment-date" datetime="16-12-2014 01:05"><i class="fa fa-clock-o"></i>
+                                        Dec 16, 2014
+                                    </time>
+                                </header>
+                                <div class="comment-post">
+                                    <p th:text="${comment.comContent}">
+                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                        Ut enim ad minim veniam, quis nostrud exercitation ul
+                                        lamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                </div>
+                                <div class="text-right">
+                                    <div class="koko" th:text="${comment.comgrp}"></div>
+                                    <a type="button" th:wpwp="${comment.comgrp}" class="btn btn-default btn-sm"
+                                       th:id="${comment.level}"
+                                       th:comid="${comment.comId}"
+                                       onclick="reply_form(this.id, $(this).attr('wpwp'),$(this).attr('comid'))">댓글
+                                    </a>
+                                </div>
+                                <!--                                <p th:class="text-right+${comment.level}" th:value="werwerwer"><a  class="btn btn-default btn-sm"><i class="fa fa-reply"></i> reply</a></p>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div th:class="pop+${comment.level}+${comment.comgrp}"></div>
+                </article>
+
+        </div>
+    </div>
+</div>
+</div>
+
+<script>
+    // $('.delete_button').click(function () {
+    //     dlete();
+    //     if (DuplicateCheck===false){
+    //         alert("권한이 없습니다.")
+    //         return false;
+    //     }
+    //
+    // });
+    function sessionCheck() {
+        alert("sessionCheck");
+        var state = "";
+        $.ajax({
+            url: '/sessionCheck',
+            type: 'post',
+            async: false,
+            data: {'bdId': $('#bdId').text()},
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "SESSION_IS_FALSE") {
+                    alert("권한이 SESSION_IS_FALSE.");
+                    window.location.href = 'list?pagenum=1&contentnum=10';
+                    state = false;
+                } else {
+                    window.location.href = 'list?pagenum=1&contentnum=10';
+                    alert("ㅈㄷㄱㅉㄷ");
+                }
+            }
+        });
+        return state;
+    }
+
+    function dlete() {
+
+        alert("werwer");
+        $.ajax({
+            url: '/deleteContent',
+            type: 'get',
+            data: {'bdId': $('#bdId').text(), 'bdNumber': $('.bdNumber').text()},
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "false") {
+                    location.href = 'list?pagenum=1&contentnum=10';
+                    alert("권한이 없습니다.");
+                } else {
+                    location.href = 'list?pagenum=1&contentnum=10';
+
+                    alert("ㅈㄷㄱㅉㄷ");
+                    return;
+                }
+            }
+        })
+    }
+
+    function reply_form(level, grp, comid) {
+        var session_id = $('.session_id').val();
+        if (session_id == null) {
+            alert("로그인 후 이용하세요.^~^");
+            return false;
+        }
+        alert(level);
+        $('.pop' + level + grp).append("" +
+            "<form class='rely_popup' action='commentInsert' method='post' style=\"width: 500px; margin: auto\">" +
+                "<textarea name='comContent' class='form-control' id='placename' rows=\"5\" cols=\"500\"/>" +
+                "<input name='bdId' type='hidden'  class='bdId_input'>" +
+                "<input name='comId' type='hidden'  class='writer'>" +
+                "<input name='level' type='hidden'  class='onval'>" +
+                "<input type='submit' value='등록'>" +
+                "<input name='bdNumber' type='hidden' class='number_input'>" +
+            "</form>").insertAfter($('.row' + level + grp));
+        var bdId = $('#bdId').text();
+        $('.bdId_input').val(bdId);
+        $('.writer').val(session_id);
+        $('#placename').attr('id', 'placename' + level + grp).attr('placeholder', comid + "님에게");
+        $('.onval').attr('class', 'onval' + level).val(level);
+        var number = $('.bdNumber').text();
+        $('.number_input').val(number);
+        // $('#reply_form').append("<input type='text'></input>");
+        // $('.ioio').removeAttr('onclick');
+    }
+
+
+</script>
+
+<script>
+    $(document).ready(function () {
+
+
+        $("#summernote").summernote({
+            height: 100,
+            focus: false,
+            toolbar: false,
+            placeholder: 'type with apple, orange, watermelon and lemon',
+            hint: {
+                words: ['apple', 'orange', 'watermelon', 'lemon'],
+                match: /\b(\w{1,})$/,
+                search: function (keyword, callback) {
+                    callback($.grep(this.words, function (item) {
+                        return item.indexOf(keyword) === 0;
+                    }));
+                }
+            }
+        });
+    })
+</script>
+
+<script type="text/javascript" >
+    CKEDITOR.replace('Contents',{
+            uiColor: '#ffffff',
+            enterMode : CKEDITOR.ENTER_BR,
+            shiftEnterMode: CKEDITOR.ENTER_P,
+            autoParagraph: false,
+            toolbar:[],
+            readOnly:true,
+            height: 500,
+            contentsCss:  '../css/contents.css'
+
+        }
+    );
+    CKEDITOR.editorConfig = function( config ) {
+        config.width = 400;
+        config.height = 1000;
+        config.font_defaultLabel = 'Arial';
+        config.fontSize_defaultLabel = '40px';
+    };
+</script>
+<footer th:include="footer::footer"></footer>
+</body>
+</html>

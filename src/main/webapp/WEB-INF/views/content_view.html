@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+</head>
+<body>
+<table border="1px" with="500">
+    <tr>
+        <td>아이디</td>
+        <td>제목</td>
+        <td>콘텐트</td>
+        <td>날</td>
+    </tr>
+    <form th:action="@{/content_modify}" method="get">
+        <tr th:each="board : ${board}">
+            <td id="bdId" th:text="${board.bdId}"></td>
+            <td th:text="${board.bdTitle}"/>
+            <td class="bdNumber" th:text="${board.bdNumber}"/>
+            <td th:text="${board.bdDate}"/>
+            <td th:text="${board.bdContent}"/>
+        </tr>
+        <tr th:each="board : ${board}">
+            <a onclick="return sessionCheck()" th:href="@{'/content_modify' (bdId=${board.bdId},
+                                    bdNumber=${board.bdNumber},
+                                    bdDate=${board.bdDate},
+                                    bdTitle=${board.bdTitle},
+                                  bdContent=${board.bdContent})}">수정</a>
+                <input onclick="return dlete()" type="button" value="삭제" class="delete_button">
+
+            <input type="submit" value="목록">
+
+            <input type="submit" value="답변">
+        </tr>
+
+    </form>
+</table>
+<script>
+    // $('.delete_button').click(function () {
+    //     dlete();
+    //     if (DuplicateCheck===false){
+    //         alert("권한이 없습니다.")
+    //         return false;
+    //     }
+    //
+    // });
+    function sessionCheck() {
+        alert("sessionCheck");
+        var state ="";
+        $.ajax({
+            url: '/sessionCheck',
+            type: 'post',
+            async: false,
+            data: {'bdId':$('#bdId').text()},
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "SESSION_IS_FALSE") {
+
+
+                    alert("권한이 SESSION_IS_FALSE.");
+                    window.location.href='writeView';
+                    state = false;
+                } else{
+                    window.location.href='writeView';
+                    alert("ㅈㄷㄱㅉㄷ");
+                }
+            }
+        });
+        return state;
+    }
+
+    function dlete() {
+
+        alert("werwer");
+        $.ajax({
+            url: '/deleteContent',
+            type: 'get',
+            data: {'bdId':$('#bdId').text(),'bdNumber':$('.bdNumber').text() },
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "false") {
+                    location.href='writeView';
+                    alert("권한이 없습니다.");
+                } else{
+                    location.href='writeView';
+
+                    alert("ㅈㄷㄱㅉㄷ");
+                    return;
+                }
+            }
+        })
+    }
+
+
+
+</script>
+</body>
+</html>

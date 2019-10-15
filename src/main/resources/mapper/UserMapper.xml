@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="UserMapper">
+
+
+    <resultMap id="usermap" type="UserVO">
+        <id property="id" column="id"/>
+        <id property="pass" column="pass"/>
+        <id property="phoneNume" column="phoneNume"/>
+        <id property="nickname" column="nickname"/>
+        <id property="email" column="email"/>
+    </resultMap>
+
+<!--    <insert id="join" parameterType="UserVO" >-->
+<!--		   insert into USER1(ID,PASS,EMAIL,NICKNAME,PHONENUM) values(#{nickname},#{id},#{pass},#{email},#{phoneNum})-->
+<!--	</insert>-->
+    <insert id="insert1" parameterType="UserVO">
+        insert into user1(id) value #{id}
+    </insert>
+
+    <select id="loginCheck" parameterType="UserVO" resultMap="usermap">
+        select id,pass from user1 where id=#{id}
+    </select>
+
+<!--중복아이디 체    -->
+    <select id="checkId" parameterType="String" resultType="String">
+        select ID from user1 where id=#{value}
+    </select>
+
+<!--    <update id="userUpddate" parameterType="UserVO">-->
+<!--        update from user1 where(#{nickname},#{id},#{pass},#{email},#{phoneNum})-->
+<!--    </update>-->
+
+    <insert id="join" parameterType="UserVO">
+    insert into  user1(nickname, id, phonenume, email, pass)values(#{nickname},#{id},#{phoneNume},#{email},#{pass})
+    </insert>
+
+</mapper>

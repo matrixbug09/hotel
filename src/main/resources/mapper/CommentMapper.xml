@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="CommentMapper">
+
+    <update id="comUpdate" parameterType="CommentVO">
+        update comment set level= case when #{level} = 0 then level+1  else level+0 end
+                           where bdnumber=#{bdNumber}
+    </update>
+    <insert id="comInsert" parameterType="CommentVO">
+        insert into comment (comid,comcontent,comdate,bdnumber,level,comgrp)
+        values (#{comId},#{comContent},now(),#{bdNumber},#{level},#{comgrp})
+
+    </insert>
+
+    <select id="comList" parameterType="CommentVO" resultType="CommentVO">
+        select * from comment where bdnumber=${bdNumber} order by level desc , comgrp asc
+
+
+    </select>
+
+    <insert id="comment_reply" parameterType="CommentVO">
+        insert into comment (comid,comcontent,comdate,bdnumber,level,comgrp)
+        select #{comId},#{comContent},now(),#{bdNumber},#{level}, comgrp+1
+        from comment where bdnumber=#{bdNumber} and level=#{level} order by comgrp desc limit 0,1;
+
+    </insert>
+</mapper>
+
+
+<!--        select level=4 from comment where bdnumber=112 order by level desc , comgrp asc-->
+<!--     a =    a-1 < a < a+1-->
+
+<!--        update comment set comgrp= case when level = 4 then comgrp+1 else comgrp+0 end where bdnumber=112;-->

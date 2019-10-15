@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Title</title>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" type="text/css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../css/time.css">
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+
+</head>
+<style>
+    body {
+        background-image: url(../img/login/login1.jpg);;
+    "
+    }
+
+    .join-box {
+        margin: 300px auto 50px auto;
+
+    }
+
+    input {
+        margin-top: 10px;
+        font-size: 18px;
+        width: 300px;
+        height: 40px;
+        text-align: center;
+
+
+    }
+
+    .formBox {
+        background-color: white;
+        width: 500px;
+        height: 400px;
+        alignment: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .join_form {
+        padding: 30px 0 0 0;
+        width: 300px;
+        height: 340px;
+        margin: 10px auto 10px auto;
+    }
+
+</style>
+<body>
+
+<header th:include="header::header"></header>
+<div class="join-box">
+    <div class="formBox">
+        <form name="join_form" class="join_form" accept-charset="utf-8" onsubmit="return validate()"
+              action="/memberJoin" method="post">
+            <input name="nickname" type="text" maxlength="10" placeholder="이름" onkeyup="test();" id="nickname"><br>
+            <div style="width: 400px">
+                <input name="id" type="text" maxlength="13" placeholder="아이디" onkeyup="dpId();" class="id" id="id">
+                <div  class="checkId btn btn-primary stretched-link">중복체크</div>
+                <br>
+            </div>
+            <input name="pass" type="password" maxlength="20" placeholder="비밀번호" id="pass"><br>
+            <input type="password" maxlength="20" placeholder="비밀번호 확인" id="pass2"><br>
+            <input name="email" type="text" maxlength="25" placeholder="이메일" id="email"><br>
+            <input name="phoneNume" type="text" maxlength="13" placeholder="전화번호" id="phone"><br>
+            <input type="submit" value="전송" class="submit">
+        </form>
+    </div>
+
+</div>
+<p th:text="${session.userInfo}">세션</p>
+<p th:text="${session.size()}">세션</p>
+<p th:text="${session.values()}">세션</p>
+
+
+<script>
+
+
+    var DuplicateCheck = false;
+
+    $(".checkId").click(function (){
+        checkId();
+    });
+
+    function checkId() {
+        $.ajax({
+            url: '/checkId',
+            type: 'GET',
+            data: {'id': $("#id").val()},
+            success: function (lp) {
+                console.log(lp);
+                if (lp === "ok") {
+                    DuplicateCheck = "true";
+                    alert("중복없");
+                } else if (lp === "false") {
+                    DuplicateCheck = "false";
+
+                    $("#id").val('');
+                    alert("중복됨")
+                }
+            }
+        })
+    }
+
+
+
+    function dpId() {
+        DuplicateCheck = false;
+    }
+
+
+    //Form 태그 유효성 검사.false 반환 시 폼 데이터 전송 안함.
+    function validate() {
+        if (DuplicateCheck == false) {
+            alert("중복체크해주세요");
+
+            join_form.id.focus();
+            return false;
+        }
+
+        //한글 이름 띄어쓰기 불가
+        var kr = /^[가-힣]+$/;
+
+        var re = /^[a-zA-Z0-9]{5,}$/; // 아이디와 패스워드가 적합한지 검사할 정규식
+        var re1 = /^.*(?=.{6,20})(?=.*[0-9])(?=.*[a-zA-Z]).*$/;
+        var re2 = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        // 이메일이 적합한지 검사할 정규식
+        var valNum = /^[0-9]/;
+
+        var nickname = document.getElementById("nickname");
+        var id = document.getElementById("id");
+        var pw = document.getElementById("pass");
+        var checkPw = document.getElementById("pass2");
+        var email = document.getElementById("email");
+        var phone = document.getElementById("phone");
+
+
+        if (join_form.nickname.value == "") {
+            alert("이름을 입력해 주세요");
+            join_form.nickname.focus();
+            return false;
+        }
+        if (!check(kr, nickname, "한글 및 철자가 올바르지 않습니다.")) {
+            return false;
+        }
+        if (!check(re, id, "아아ㅣ디가 .")) {
+            return false;
+        }
+        if (!check(re1, pw, "비밀호는 6~20 자리 영문+숫자 및 특수문자만 가능합니다.(한글 불가)")) {
+            return false;
+        }
+        if (!check(re1, checkPw, "비밀번호 검사23")) {
+            return false;
+        }
+        var blank_pattern = /[\s]/g;
+        if( blank_pattern.test( join_form.pass.value) == true){
+            alert(' 공백은 사용할 수 없습니다. ');
+            return false;
+        }
+
+        if (!check(re2, email, "email 형식 확인")) {
+            return false;
+        }
+        if (!check(valNum, phone, "e333e")) {
+            return false;
+        }
+
+
+        //비밀번호 체크.
+        if (join_form.pass.value != join_form.pass2.value) {
+            alert("비밀번호가 다릅니다. 다시 확인해 주세요.");
+            join_form.pass.focus();
+            return false;
+        }
+
+        if (email.value == "") {
+            alert("이메일을 입력해 주세요");
+            email.focus();
+            return false;
+        }
+
+        if (!check(re2, email, "적합하지 않은 이메일 형식입니다.")) {
+            return false;
+        }
+
+
+    }
+
+    function check(re, what, message) {
+        if (re.test(what.value)) {
+            return true;
+        }
+        if (what == '') {
+            alert("빈문자가있습니다.")
+        }
+        alert(message);
+        what.value = "";
+        what.focus();
+        //return false;
+    }
+
+
+
+    //     $(function(){
+    // //아이디 중복체크
+    //         $('.checkId').blur(function(){
+    //             $.ajax({
+    //                 type:"GET",
+    //                 url:"checkId",
+    //                 data:{
+    //                     "id":$('#id').val()
+    //                 },
+    //                 success:function(data){	//data : checkSignup에서 넘겨준 결과값
+    //                     if($.trim(data)=="YES"){
+    //                         if($('#id').val()!=''){
+    //                             alert("사용가능한 아이디입니다.");
+    //                         }
+    //                     }else{
+    //                         if($('#id').val()!=''){
+    //                             alert("중복된 아이디입니다.");
+    //                             $('#id').val('');
+    //                             $('#id').focus();
+    //                         }
+    //                     }
+    //                 }
+    //             })
+    //         })
+    //
+    //     });
+
+
+</script>
+<footer th:include="footer::footer"></footer>
+</body>
+
+
+</html>

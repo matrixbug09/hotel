@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/board.css">
+
+</head>
+<body>
+<div style="background-image:url(../img/community.jpg);
+        width: auto; height: 630px; " >
+    <div class="community_title fadeIn">MY PAGE </div>
+    <header th:include="header::header"></header>
+</div>
+<div>
+    <table class="mypage-info" style="padding-left: 20px; text-align: center">
+        <tr >
+            <td>예약 아이디</td>
+            <td>객실 타입</td>
+            <td>체크인</td>
+            <td>체크 아웃</td>
+            <td>방 갯수</td>
+            <td>금액(만원)</td>
+        </tr>
+        <tr th:each="book:${book}">
+            <td th:text="${book.book_id}">예약 정보가 없습니다.</td>
+            <td th:text="${book.room_type}"></td>
+            <td th:text="${book.checkin_date}"></td>
+            <td th:text="${book.checkout_date}"></td>
+            <td th:text="${book.required_room}"></td>
+            <td th:text="${book.total_pay}"></td>
+        </tr>
+    </table>
+</div>
+
+<footer th:include="footer::footer"></footer>
+</body>
+</html>

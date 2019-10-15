@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+
+
+    <!-- 합쳐지고 최소화된 최신 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+    <link rel="stylesheet" type="text/css" href="../css/board.css">
+    <title>게시판 리스werewrwerewr</title>
+</head>
+<body>
+<div style="background-image:url(../img/community.jpg);
+        width: 100%; height: 630px;">
+    <header th:include="header::header"></header>
+    <div class="community_title fadeIn">community</div>
+</div>
+
+
+<div style="padding-top: 100px">
+    <div style="
+        width: 340px;
+        height: 560px;
+        padding: 10px;
+        margin-bottom: 20px;
+        float: left;
+        border-right: 1px solid #bcbcbc;
+      ">
+        <div class="container-two" style="padding-top: 50px">
+            <button class="button-css">
+                공지사항
+                <div class="fill-one"></div>
+            </button>
+            <br><br><br>
+            <button class="button-css">
+                css 버튼 꾸미기.
+                <div class="fill-two"></div>
+            </button>
+            <br><br><br>
+            <button class="button-css">
+                Community
+                <div class="fill-one"></div>
+            </button>
+            <br><br><br>
+            <button class="button-css">
+                Hover over me
+                <div class="fill-two"></div>
+            </button>
+        </div>
+    </div>
+<!--    <div style="padding-top: 230px" th:text="${T(Math).floor(boardView.size()/10)*10+1}"></div>-->
+
+    <div style="
+    margin: 0 100px 0 auto;
+    width: 1050px;
+    height: auto;
+        padding: 20px;
+       ">
+        <table class="table table-striped" style="background-color: white">
+            <a class="btn btn-primary stretched-link" href="/writePage">글쓰기</a>
+            <thead>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            </thead>
+            <tbody class="table table-hover" th:each="boardView : ${boardView}">
+            <tr>
+                <td th:text="${boardView.bdNumber}"/>
+                <td>
+                    <a th:href="@{'/content_view' (bdId=${boardView.bdId},
+                                    bdNumber=${boardView.bdNumber},
+                                    bdTitle=${boardView.bdTitle},
+                                  bdContent=${boardView.bdContent})}"
+                       th:text="${boardView.bdTitle}">
+                    </a>
+                </td>
+                <td th:text="${boardView.bdId}"/>
+            </tr>
+            </tbody>
+
+
+            <!--    <th:block th:each="i: ${#numbers.sequence(pageVO.getStartPage(), pageVO.getEndPage())}"><p th:text="${ i }"></p>-->
+            <!--    </th:block>-->
+
+
+        </table>
+    </div>
+
+    <div style="background-color: white; margin-top: -20px; text-align: center; border-color:#cccccc">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" th:if="${pageVO.isPrev()}"
+                       th:onclick="|javascript:page2(${pageVO.getStartPage()-1})|">Previous</a>
+                </li>
+                <li class="page-item">
+                    <th:block th:each="i: ${#numbers.sequence(pageVO.getStartPage(), pageVO.getEndPage())}">
+                        <a class="page-item" style="cursor: pointer" th:text="${i}"
+                           th:onclick="|javascript:page2('${ i }')|"></a>
+                    </th:block>
+                </li>
+                <li class="page-item"><a href="#" th:if="${pageVO.isNext()}" th:method="post"
+                                         th:onclick="|javascript:page2('${pageVO.getEndPage()+1}')|">Next</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+<form name="paging2">
+    <input type="hidden" name="pagenum">
+    <input type="hidden" name="contentnum">
+</form>
+
+<script>
+    function page2(idx) {
+        var f = document.paging2;//post 전달 설정.
+        f.contentnum.value = 10;
+        f.pagenum.value = idx;
+        f.action = "list";
+        f.method = "get";
+        f.submit();
+        // var pagenum = idx;
+        // location.href = "http://ec2-13-58-142-181.us-east-2.compute.amazonaws.com:8080/hotel123//list?pagenum=" + pagenum + "&contentnum=10"
+    }
+</script>
+
+
+
+</body>
+<footer th:include="footer::footer"></footer>
+</html>

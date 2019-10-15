@@ -1,0 +1,189 @@
+.modify{
+    border-radius: 10px;
+    position: center;
+    margin: auto;
+    background-color: #ffffff;
+    width: 1000px;
+    height: auto;
+    text-align: center;
+
+
+}
+.content{
+    border-radius: 10px;
+    position: center;
+    margin: auto;
+    background-color: #969eb5;
+    width: 1000px;
+    height: auto;
+    text-align: center;
+
+
+}
+.modify_title{
+    padding: 30px;
+    margin: auto;
+    font-size: 50px;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+}
+.modify_bdId{
+    font-size: 12px;
+
+}
+
+.contentBox{
+    font-size: 20px;
+    font-family:"Apple SD Gothic Neo";
+    padding-top: 20px;
+    text-align: left;
+    color: #515151;
+    margin: auto;
+    border-top: 1px solid;
+    background-color: #ffffff;
+    width: 998px;
+    height: 500px;
+}
+.modifyButton{
+    background-color: #48a0ff;
+    border: 1px solid;
+    text-shadow: #2c4162;
+}
+.ckeditor{
+    border: 0;
+}
+.comment_div{
+    margin: auto;
+}
+.community_title{
+    filter: opacity(100%);
+    color: white;
+    text-shadow: #ffffff;
+    padding-top: 340px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-weight: bold;
+    font-size: 54px;
+    line-height: 54px;
+    text-transform: uppercase;
+    text-align: center;
+    animation: ease-in 3s;
+
+}
+.community_title a:hover, community_title a.sell{
+    color: #fff;
+    background: #2d3345;
+}
+.fadeIn{
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    animation-duration: 1.5s;
+}
+
+button-css {
+    font-family: Helvetica, sans-serif;
+    font-weight: 100;
+    color: #fff;
+}
+
+h1 {
+    letter-spacing: 0.5em;
+    text-align: center;
+    margin-top: 50px;
+    line-height: 1.6em;
+}
+
+p {
+    font-size: 1.1em;
+    text-align: center;
+    margin: 110px auto 20px;
+    letter-spacing: 0.05em;
+}
+
+
+.button-css {
+    position: relative;
+    height: 50px;
+    width: 280px;
+    border: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-size: 1.1em;
+    letter-spacing: 0.2em;
+    overflow: hidden;
+    box-shadow: 0 4px 12px 0 rgba(152, 160, 180, 10);
+    z-index: -2;
+}
+
+.button-one {
+}
+
+.fill-one {
+    position: absolute;
+    background-image: linear-gradient(to right, #E040FB, #00BCD4);
+    height: 70px;
+    width: 420px;
+    border-radius: 5px;
+    margin: -40px 0 0 -140px;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.container-one:hover .fill-one {
+    -webkit-transform: translateX(100px);
+    -moz-transform: translateX(100px);
+    transform: translateX(100px);
+}
+
+.fill-two {
+    position: absolute;
+    background-image: linear-gradient(to right, #E040FB, #00BCD4);
+    background-size: 150% 150%;
+    height: 70px;
+    width: 420px;
+    border-radius: 5px;
+    margin: -40px 0 0 -140px;
+    z-index: -1;
+    transition: all 0.4s ease;
+}
+
+.container-two:hover .fill-two {
+    -webkit-animation: gradient 3s ease infinite;
+    -moz-animation: gradient 3s ease infinite;
+    animation: gradient 3s ease infinite;
+}
+
+@-webkit-keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@-moz-keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}

@@ -1,0 +1,64 @@
+
+.loginBg{
+    position: relative;
+    padding-top: 40%;
+    top: 0; right: 0; left: 0;
+    background-repeat : no-repeat;
+    background-size: cover;
+}
+.loginBg  .loginForm {
+    border: 2px solid #ffae00;
+    /*background-image: url(../img/about/1_1.jpg);"*/
+    transform: translate3d(0, -399px, 0);
+    vertical-align: center;
+    margin: auto;
+    width: 500px;
+    height: 300px;
+    background-color: white;
+
+    box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.4);
+}
+.loginBg  .loginForm form{
+
+    padding-left:20%;
+
+
+}
+.loginBg  .loginForm input {
+
+    text-align: center;
+
+    font-size: 23px;
+
+}
+.Btn{
+
+
+}
+
+.loginBtn {
+
+
+
+    width: 140px;
+
+    background-color: #f8585b;
+
+    border: none;
+
+    color: #fff;
+
+    padding: 15px 0;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    margin: 4px;
+
+    cursor: pointer;
+}

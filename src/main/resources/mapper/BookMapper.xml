@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="BookMapper">
+
+
+
+<resultMap id="bookinsertMap" type="BookVO">
+	<id property="book_name" column="book_name"/>
+	<id property="book_num" column="book_num"/>
+</resultMap>
+
+    <insert id="bookinsert" parameterType="BookVO">
+		   insert into book(book_id, room_type, checkin_date, checkout_date, required_room, total_pay)
+		   values(#{book_id},#{room_type},#{checkin_date},#{checkout_date},#{required_room},#{total_pay})
+	</insert>
+
+	<select id="mypage" parameterType="String" resultType="BookVO">
+		select * from book where book_id=#{value}
+	</select>
+
+
+
+
+</mapper>

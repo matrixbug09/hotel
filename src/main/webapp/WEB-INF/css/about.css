@@ -1,0 +1,268 @@
+/* about1 */
+.aniInfo{
+    position: relative;
+    width: 100%; max-width: 1400px;
+    margin: auto;
+
+
+}
+.aniInfo .list1{
+    position: relative;
+    width: 100%; height: 900px;
+
+    background: #ffae00;
+    text-align: right;
+    box-shadow: 5px 4px 10px rgba(0,0,0,0.2);
+    z-index: 2;
+
+}
+.aniInfo .list2{
+
+    padding-top: 600px;
+    position: relative;
+    width: 100%; height: 600px;
+
+    background: #ffae00;
+    text-align: right;
+    box-shadow: 5px 4px 10px rgba(0,0,0,0.2);
+    z-index: 2;
+
+}
+.aniInfo .list1 .pick{
+    background-color: #48a0ff;
+
+    position: absolute;
+    top: 0; right: 0; left: 0;
+
+    width: auto; height: 900px;
+}
+.aniInfo .list1 .pick2{
+    background-image:url(../img/draw.png);
+
+    position: absolute;
+    top: 0; right: 0; left: 0;
+
+    width: auto; height: 1600px;
+}
+
+
+.pic{
+
+}
+.about0 { overflow: hidden; }
+.about0 .loader0 {
+    position:relative ;
+    left:0px;
+    top:0px;
+    right:0px;
+
+    width: 100%;
+    height: 100%;
+
+    background-repeat : no-repeat;
+    background-size: cover;
+
+
+
+}
+
+
+
+/* about1 */
+#about1 { overflow: hidden; }
+#about1 .loader1 {
+    position:relative ;
+    width: 100%;
+    height: 100%;
+    background-repeat : no-repeat;
+    left:0px;
+    top:0px;
+    right:0px;
+    background-size: cover;
+    padding-bottom: 200px;
+}
+#about1 .slogan {
+    position: absolute;
+    top: 35%; right: 0; left: 0;
+    margin: auto;
+    width: 34%; height: 13%;
+    text-align: center;
+    transform: translateY(100px);
+}
+#about1 .slogan img { max-width: 100%; }
+#about1 .arrowD {
+    position: absolute;
+    right: 0; left: 0; bottom: 30%;
+    margin: auto;
+    width: 11px; height: 54px;
+    background: url(../images/about/1_arrow.png) 0 0 no-repeat;
+}
+
+
+.beach1 {
+    text-shadow:#222222;
+    font-weight: bold;
+    position: absolute;
+    font-size: 7em;
+    color: #fff;
+    text-align:center;
+    padding-left: 50px;
+    transition: top 0.3s, height 0.3s;
+    z-index: 1;
+
+}
+/* about2 */
+.about2 { height: 1460px;
+
+
+
+}
+/*.about2::after {*/
+    /*content: '';*/
+    /*position: absolute;*/
+    /*bottom: 0; right: 0; left: 0;*/
+    /*margin: auto;*/
+    /*width: 100%; height: 275px;*/
+    /*background: #f4f4f4;*/
+    /*z-index: -1;*/
+/*}*/
+.about2_wrap {
+    position: relative;
+    width: 100%; max-width: 1400px;
+    margin: auto;
+}
+.about2_wrap .navyBox {
+    border: #ffcc81 3px solid;
+    position: absolute;
+    top: 0px; right: 0;
+    text-align: left;
+    width: 570px; height: 700px;
+    padding-top: 130px;
+    padding-left: 170px;
+    background: url(../images/about/2_bg1.jpg) 140px 580px no-repeat #2d3345;
+    z-index: 4;
+}
+.about2_wrap .navyBox::before {
+
+    content: '';
+    position: absolute;
+    top: 20px; right: 20px; bottom: 20px; left: 20px;
+    margin: auto;
+    border: #ffcc81 1px solid;
+}
+.about2_wrap .navyBox .title {
+
+    margin-bottom: 52px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 51px; font-weight: bold;
+    color: #fff;
+    line-height: 51px;
+}
+.about2_wrap .navyBox .txt {
+    margin-bottom: 30px;
+    font-size: 15px;
+    line-height: 24px;
+    color: #969eb5;
+}
+.about2_wrap .navyBox .eng {
+    position: relative;
+    margin-bottom: 70px;
+    padding-bottom: 66px;
+    font-size: 22px;
+    color: #e0e4f2;
+}
+.about2_wrap .navyBox .eng::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100px; height: 1px;
+    background: #b7bdd1;
+}
+.about2_wrap .navyBox .btn_default {
+
+    color: #fff;
+    width: 250px; height: 60px;
+    font-size: 30px;
+
+    letter-spacing: 0.5em;
+    display: inline-block;
+}
+.about2_wrap .navyBox .btn_default:hover {
+    background: #fff;
+    color: #2d3345;
+}
+
+.about2_wrap .lImg {
+
+    position: absolute;
+    top: 200px; right: 700px; left: -150px;
+    margin: auto;
+    width: 800px; height: 750px;
+    box-shadow: 5px 4px 10px rgba(0,0,0,0.2);
+    z-index: 3;
+    animation-name: fadeIn;
+}
+
+.about2_wrap .lImg .imgText {
+
+    text-transform: initial;
+    padding-top: 300px;
+    color: white;
+    font-size: 3em;    letter-spacing: 0.1em;
+    font-weight: bold;
+    text-align: center;
+ }
+.about2_wrap .lImg h3{
+
+    text-transform: initial;
+
+    color: white;
+    font-size: 3em;    letter-spacing: 0.1em;
+    font-weight: initial;
+    text-align: center;
+    text-underline: white;
+    -webkit-animation: fadein 6s;
+    animation-direction:alternate;
+    animation-fill-mode: inherit;
+}
+@-webkit-keyframes fadein{
+    0% {opacity: 0;
+        transform: translateX(0);
+    }
+
+
+}
+
+.about2_wrap .whiteBox {
+    position: absolute;
+    top: 850px; left: 100px;
+    display: inline-block;
+    width: 700px; height: 330px;
+    padding: 90px;
+    background: url(../images/about/2_bg2.jpg) 315px 30px no-repeat #fcfcfc;
+    box-shadow: 5px 4px 10px rgba(0,0,0,0.2);
+    z-index: 10;
+}
+.about2_wrap .whiteBox .title {
+    margin-bottom: 45px;
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 36px; font-weight: bold;
+    color: #2d3345;
+}
+.about2_wrap .whiteBox .txt {
+    margin-bottom: 45px;
+    font-size: 15px; line-height: 24px;
+    color: #777;
+}
+.about2_wrap .whiteBox .btn_default {
+
+    color: #2c4162;
+    padding-top: 7px;
+    display: inline-block;
+    width: 460px; height: 60px;
+    border: 1px solid;
+    text-align: center;
+    font-size: 35px;
+    letter-spacing: 0.5em;
+
+}

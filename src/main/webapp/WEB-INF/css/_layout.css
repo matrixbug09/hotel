@@ -1,0 +1,253 @@
+/**** header ****/
+
+body{
+
+    margin: 0 0 0 0;
+}
+.login{
+    position: relative;
+    transform: translateX(300px) translateY(10px);;
+    width: 74px;
+    background-color: #ffffff;
+    border: 1px solid;
+    color: #ffae00;
+    padding: 4px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor: pointer;
+    left: 400px;
+    display: inline-block;
+}
+.login .SCROLL{
+}
+
+.nani_top{
+    position:fixed;z-index:200;
+    top: 0; right: 0; left: 0;
+    width:100%; height: 150px;
+    margin: auto;
+    font-size:0px;
+    text-align: center;
+    transition: top 0.4s, height 0.4s, background 0.4s;
+
+}
+.nani_top.SCROLL {
+    height: 100px;
+    background: #fff;
+}
+.nani_top.SCROLL .menu_area { margin-top: 0; }
+.nani_top.SCROLL .menu_area .homeMenu { color: #999; margin-top: 0; }
+.nani_top.SCROLL .menu_area .homeMenu:hover { color: #2d3345; }
+.nani_top.SCROLL .menu_area .sub { top: 70px; }
+.nani_top.SCROLL .menu_area li:hover .sub logo{ top: 80px; }
+.nani_top.SCROLL .logo {
+    color: black;
+    font-weight: bold;
+    padding-top: 30px;
+    font-size: 24px;
+    top: 0;
+    height: 85px;
+}
+
+.nani_top .logo {
+    color: white;
+    font-weight: bold;
+    font-size: 50px;
+    position: absolute;
+    top: 40px; right: 0; left: 0;
+    margin: auto;
+    display: inline-block;
+    width: 220px; height: 117px;
+    z-index: 1;
+    transition: top 0.3s, height 0.3s;
+}
+.menu_area{
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    margin: 39px auto 0;
+    font-size: 0;
+    text-align:center;
+    transition: margin-top 0.4s, background 0.4s, opacity 0.4s;
+}
+.menu_area li{
+    position: relative;
+    vertical-align:top;
+    display:inline-block;*display:inline;_display:inline;
+    text-transform: uppercase;
+}
+.menu_area .homeMenu {
+    position: relative;
+    display:block;
+    margin-top: 3px;
+    padding: 0 50px;
+    font-size: 16px;
+    letter-spacing: 0;
+    color: #fff;
+    font-weight: bold;
+    line-height: 88px;
+    /* background: transparent; */
+    transition: padding 0.3s, margin-top 0.3s;
+}
+.menu_area .sub{
+    position: absolute;
+    display: block;
+    top: 95px; left: 50%;
+    transform:translate(-50%);-ms-transform:translate(-50%);-webkit-transform:translate(-50%);
+    visibility: hidden; opacity: 0;
+    font-size: 13px;
+    line-height: 35px;
+    padding: 20px 30px;
+    width: auto;
+    background: rgba(45,47,49,0.8);
+    transition: top 0.3s, opacity 0.2s, visibility 0.2s;
+}
+.menu_area li:hover .sub{
+    top: 105px;
+    visibility:visible;opacity:1;
+    transition: top 0.3s, opacity 0.2s, visibility 0.2s;
+}
+.menu_area .sub dt { position: relative; }
+
+.menu_area .sub dt a {
+    position: relative;
+    white-space:nowrap;
+    display: inline-block;
+    float: left; clear: left;
+    color: #fff;
+    line-height: 30px;
+    transition: color 0.3s;
+}
+.menu_area .sub dt a::after {
+    content: '';
+    position: absolute;
+    bottom: 4px; left: 0;
+    width: 0; height: 1px;
+    background: #fff;
+    transition: width 0.3s;
+}
+.menu_area .sub dt a:hover{
+    text-decoration: none;
+}
+.menu_area .sub dt a:hover::after { width: 100%; }
+.menu_area li.none { width: 220px; }
+.menu_area li:nth-child(6) { left: 55px; }
+.menu_area li:nth-child(7) { left: 50px; }
+.menu_area li:nth-child(8) { left: 50px; width: 150px; }
+.menu_area li:nth-child(9) { left: 55px; width: 150px; }
+
+/* 우측버튼 */
+.rightBtns {
+
+}
+.rightBtns a {
+
+}
+
+/***** footer *****/
+
+.footer_wrap {
+    position: relative;
+    width: 100%;
+    background: #252525;
+    overflow: hidden;
+}
+.footer_wrap .pension_info {
+    position: relative;
+    width: 100%; height: 100%;
+    max-width: 1520px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+.footer_wrap .pension_info .info {
+    display: inline-block;
+    width: 25vw;
+    vertical-align: top;
+}
+.footer_wrap .pension_info .info:nth-child(2) { width: 480px; }
+.footer_wrap .pension_info .title {
+    margin-bottom: 18px;
+    font-size: 16px;
+    letter-spacing: 0.15em;
+    color: #aaa;
+}
+.footer_wrap .pension_info .txt {
+    font-size: 16px;
+    line-height: 26px;
+    color: #fff;
+}
+.footer_wrap .pension_info .txt.txt-hp { letter-spacing: 0.08em; }
+.footer_wrap .c-grey { color: #aaa; }
+.footer_wrap .c-red { color: #d6544e; }
+
+.footer_wrap .footer_info {
+    position: relative;
+    width: 100%; height: 100%;
+    padding: 45px 0;
+    color: #949494;
+    font-size: 14px;
+    line-height: 26px;
+    border-top: 1px solid #515151;
+    text-align: center;
+}
+.footer_wrap .scrollTop {
+    position: absolute;
+    top: 30px; right: 50px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #b8b8b8!important;
+    transition: color 0.3s;
+}
+.footer_wrap .scrollTop::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    right: 0;
+    left: 0;
+    height: 1px;
+    background: #b8b8b8;
+    transition: background 0.3s;
+}
+
+.mypage-info{
+    padding-left: 36px;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 900;
+    color: #252525;
+    background: #ffffff;
+    border-top: 2px solid #f8585b;
+    text-align: center;
+    width: 50%;
+    height: 15%;
+
+
+}
+
+.footer-layout{
+    padding-top: 50px;
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    margin-top: 100px;
+    background-color: #252525;
+    max-width: 100%;
+    height: 200px;
+}
+
+
+@media ( max-width: 1760px ) {
+    .nani_top.SCROLL .rightBtns { top: 15px; }
+    .nani_top.SCROLL .rightBtns a { display: block; }
+    .nani_top.SCROLL .rightBtns .reservation_btn { background-position: -2px center;}
+}
+@media ( max-width: 1600px ) {
+    .nani_top.SCROLL .rightBtns { top: 0px; }
+    .nani_top.SCROLL .rightBtns a { display: inline-block; }
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>YOUNG HOTEL Login</title>
+    <link rel="stylesheet" type="text/css" href="../css/time.css">
+    <link rel="stylesheet" type="text/css" href="../css/_layout.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+</head>
+<body topmargin="0" bottommargin="0" leftmargin="0" rightmargin="0">
+
+<header th:include="header::header"></header>
+<div class="loginBg"  style="background-image:url(../img/login/login1.jpg); ;">
+    <div class="loginForm"><br><br>
+        <form action="/loginCheck" method="post">
+            <label class="inputBox">
+                <input name="id" class="ide" type="text" maxlength="11" id="id" placeholder="아이디"><br><br><br>
+                <input name="pass" class="pwe" type="password" maxlength="13" id="pwe" placeholder="비밀번호"><br><br>
+            </label>
+            <label class="Btn">
+                <input class="loginBtn" type="submit" value="LOGIN">
+                <input class="joinBtn" type="button" value="JOIN" >
+            </label>
+        </form>
+    </div>
+</div>
+
+
+
+<script >
+    $(".joinBtn").click(function(){
+        window.location.href='/join'
+    });
+
+</script>
+<script>
+
+
+
+</script>
+
+<footer th:include="footer::footer"></footer>
+</body>
+</html>
